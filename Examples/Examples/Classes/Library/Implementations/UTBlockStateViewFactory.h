@@ -15,6 +15,6 @@
  Adds block that will be called each time, when view that implements specified protocol will be passed to
    - (void)setupView: method
  */
-- (void)addStateViewCreationBlock:(UIView * (^)(NSError * error))viewCreationBlock forViewState:(UTViewState)state;
+- (void)addForState:(UTViewState)state viewCreationBlock:(UIView * (^)(NSError * error))viewCreationBlock;
 
 @end

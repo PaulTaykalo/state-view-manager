@@ -50,7 +50,7 @@
 }
 
 
-- (void)addStateViewCreationBlock:(UIView * (^)(NSError * error))viewCreationBlock forViewState:(UTViewState)state {
+- (void)addForState:(UTViewState)state viewCreationBlock:(UIView * (^)(NSError * error))viewCreationBlock {
   if (viewCreationBlock) {
       [[self stateViewCreationBlockPerState] setObject:[viewCreationBlock copy] forKey:@(state)];
   }

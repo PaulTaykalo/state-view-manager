@@ -18,33 +18,30 @@
     self = [super init];
     if (self) {
 
-        [self addStateViewCreationBlock:^UIView *(NSError * error) {
+
+        [self addForState:UTStateViewStateBase viewCreationBlock:^UIView *(NSError * error) {
             // Nothing here for base state view
             return nil;
-        }
-                           forViewState:UTStateViewStateBase];
+        }];
 
 
-        [self addStateViewCreationBlock:^UIView *(NSError * error) {
+        [self addForState:UTStateViewStateLoading viewCreationBlock:^UIView *(NSError * error) {
             return [EXLoadingStateView new];
-        }
-                           forViewState:UTStateViewStateLoading];
+        }];
 
 
-        [self addStateViewCreationBlock:^UIView *(NSError * error) {
+        [self addForState:UTStateViewStateNoData viewCreationBlock:^UIView *(NSError * error) {
             UIView * view = [UIView new];
             [view setBackgroundColor:[UIColor blueColor]];
             return view;
-        }
-                           forViewState:UTStateViewStateNoData];
+        }];
 
 
-        [self addStateViewCreationBlock:^UIView *(NSError * error) {
+        [self addForState:UTStateViewStateError viewCreationBlock:^UIView *(NSError * error) {
             EXErrorStateView * view = [EXErrorStateView new];
             view.message = [error localizedDescription];
             return view;
-        }
-                           forViewState:UTStateViewStateError];
+        }];
 
     }
     return self;
