@@ -1,13 +1,11 @@
 //
 //  UTBlockStateViewFactory
-//  UAToday
+//  State View Manager
 //
 //  Created by Paul Taykalo on 7/17/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
 #import "UTBlockStateViewFactory.h"
-#import "EXLoadingStateView.h"
-#import "EXErrorStateView.h"
 
 @interface UTBlockStateViewFactory ()
 

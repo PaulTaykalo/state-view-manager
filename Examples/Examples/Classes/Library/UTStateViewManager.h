@@ -1,6 +1,6 @@
 //
 //  UTStateViewManager
-//  UAToday
+//  State View Manager
 //
 //  Created by Paul Taykalo on 7/17/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
