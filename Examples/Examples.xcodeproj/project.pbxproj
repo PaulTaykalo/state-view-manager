@@ -20,6 +20,9 @@
 		E41C9EC0179C485200249F91 /* UTDefaultViewSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E41C9EB8179C485200249F91 /* UTDefaultViewSwitcher.m */; };
 		E41C9EC1179C485200249F91 /* UTDefaultStateViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E41C9EBA179C485200249F91 /* UTDefaultStateViewFactory.m */; };
 		E41C9EC2179C485200249F91 /* UTStateViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E41C9EBD179C485200249F91 /* UTStateViewManager.m */; };
+		EEDBE05B3EDEED80B5F70F40 /* UTDefaultStateViewActualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDBE4283C43C77EF5FF5A0E /* UTDefaultStateViewActualizer.m */; };
+		EEDBE75D2F50165136C1F2FE /* EXErrorStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDBE2BD79165638A4587E18 /* EXErrorStateView.m */; };
+		EEDBEFB8235F84C58B8B697F /* EXLoadingStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDBEBE6BC1E04471657475B /* EXLoadingStateView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,14 @@
 		E41C9EBD179C485200249F91 /* UTStateViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTStateViewManager.m; sourceTree = "<group>"; };
 		E41C9EBE179C485200249F91 /* UTViewStateContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTViewStateContainer.h; sourceTree = "<group>"; };
 		E41C9EBF179C485200249F91 /* UTViewSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTViewSwitcher.h; sourceTree = "<group>"; };
+		EEDBE2BD79165638A4587E18 /* EXErrorStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXErrorStateView.m; sourceTree = "<group>"; };
+		EEDBE4283C43C77EF5FF5A0E /* UTDefaultStateViewActualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTDefaultStateViewActualizer.m; sourceTree = "<group>"; };
+		EEDBE467BD0465016618DC25 /* UTReloadableStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTReloadableStateView.h; sourceTree = "<group>"; };
+		EEDBE896BCB30C934A55B105 /* EXLoadingStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXLoadingStateView.h; sourceTree = "<group>"; };
+		EEDBEA5F70B68A870D7898CF /* UTStateViewActualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTStateViewActualizer.h; sourceTree = "<group>"; };
+		EEDBEBE6BC1E04471657475B /* EXLoadingStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXLoadingStateView.m; sourceTree = "<group>"; };
+		EEDBEBEAC25754DCDC51EAA1 /* EXErrorStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXErrorStateView.h; sourceTree = "<group>"; };
+		EEDBEDD5EB2CAABD49E8620E /* UTDefaultStateViewActualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UTDefaultStateViewActualizer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +138,7 @@
 				E41C9EA8179C3EDA00249F91 /* EXViewController.h */,
 				E41C9EA9179C3EDA00249F91 /* EXViewController.m */,
 				E41C9EAA179C3EDA00249F91 /* EXViewController.xib */,
+				EEDBE0670B23F2C69BE7A5CA /* StateViews */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -140,6 +152,8 @@
 				E41C9EBD179C485200249F91 /* UTStateViewManager.m */,
 				E41C9EBE179C485200249F91 /* UTViewStateContainer.h */,
 				E41C9EBF179C485200249F91 /* UTViewSwitcher.h */,
+				EEDBE467BD0465016618DC25 /* UTReloadableStateView.h */,
+				EEDBEA5F70B68A870D7898CF /* UTStateViewActualizer.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -161,8 +175,21 @@
 				E41C9EB8179C485200249F91 /* UTDefaultViewSwitcher.m */,
 				E41C9EB9179C485200249F91 /* UTDefaultStateViewFactory.h */,
 				E41C9EBA179C485200249F91 /* UTDefaultStateViewFactory.m */,
+				EEDBE4283C43C77EF5FF5A0E /* UTDefaultStateViewActualizer.m */,
+				EEDBEDD5EB2CAABD49E8620E /* UTDefaultStateViewActualizer.h */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		EEDBE0670B23F2C69BE7A5CA /* StateViews */ = {
+			isa = PBXGroup;
+			children = (
+				EEDBEBE6BC1E04471657475B /* EXLoadingStateView.m */,
+				EEDBE896BCB30C934A55B105 /* EXLoadingStateView.h */,
+				EEDBE2BD79165638A4587E18 /* EXErrorStateView.m */,
+				EEDBEBEAC25754DCDC51EAA1 /* EXErrorStateView.h */,
+			);
+			path = StateViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +264,9 @@
 				E41C9EC0179C485200249F91 /* UTDefaultViewSwitcher.m in Sources */,
 				E41C9EC1179C485200249F91 /* UTDefaultStateViewFactory.m in Sources */,
 				E41C9EC2179C485200249F91 /* UTStateViewManager.m in Sources */,
+				EEDBEFB8235F84C58B8B697F /* EXLoadingStateView.m in Sources */,
+				EEDBE75D2F50165136C1F2FE /* EXErrorStateView.m in Sources */,
+				EEDBE05B3EDEED80B5F70F40 /* UTDefaultStateViewActualizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

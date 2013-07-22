@@ -10,6 +10,9 @@
 #import "UTStateViewManager.h"
 #import "UTDefaultStateViewFactory.h"
 #import "UTDefaultViewSwitcher.h"
+#import "UTReloadableStateView.h"
+#import "UTStateViewActualizer.h"
+#import "UTDefaultStateViewActualizer.h"
 
 
 @interface EXViewController ()
@@ -20,23 +23,25 @@
 
 @implementation EXViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-
-    return self;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
     _stateViewManager = [[UTStateViewManager alloc] initWithContainerView:self.view
                                                               viewFactory:[UTDefaultStateViewFactory new]
-                                                             viewSwitcher:[UTDefaultViewSwitcher new]];
+                                                             viewSwitcher:[UTDefaultViewSwitcher new]
+                                                      stateViewActualizer:[UTDefaultStateViewActualizer new]];
+
+    __weak EXViewController * weakSelf = self;
+    [[_stateViewManager stateViewActualizer]
+     addSetupActionForViewOfProtocol:@protocol(UTReloadableStateView)
+                                with:^(id<UTReloadableStateView> view) {
+                                    [view setReloadBlock:^{
+                                        [weakSelf reload];
+                                    }];
+                                }];
+
+
 
     UIBarButtonItem * baseBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Base"
                                                                            style:UIBarButtonItemStylePlain
@@ -60,6 +65,11 @@
     self.navigationItem.leftBarButtonItems = @[ baseBarButtonItem, loadingBarButtonItem];
     self.navigationItem.rightBarButtonItems = @[errorBarButtonItem, noDataBarButtonItem];
 
+}
+
+
+- (void)reload {
+    [_stateViewManager switchToState:UTStateViewStateLoading];
 }
 
 

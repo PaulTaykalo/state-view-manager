@@ -22,7 +22,7 @@
     __weak id<UTViewStateContainer> stateContainer = viewStateContainer;
     if (previousView) {
 
-        [UIView animateWithDuration:3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
 
             previousView.alpha = 0;
 
@@ -41,7 +41,7 @@
         nextView.frame = containerView.bounds;
         [containerView addSubview:nextView];
 
-        [UIView animateWithDuration:3 animations:^{
+        [UIView animateWithDuration:1 animations:^{
             nextView.alpha = 1;
         }];
     }

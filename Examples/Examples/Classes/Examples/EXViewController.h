@@ -10,4 +10,6 @@
 
 @interface EXViewController : UIViewController
 
+- (void)reload;
+
 @end

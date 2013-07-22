@@ -9,6 +9,8 @@
 #import "UTStateViewFactoryProtocol.h"
 #import "UTViewSwitcher.h"
 #import "UTViewStateContainer.h"
+#import "UTReloadableStateView.h"
+#import "UTStateViewActualizer.h"
 
 
 @interface UTStateViewManager ()<UTViewStateContainer>
@@ -16,20 +18,24 @@
 @property (nonatomic, assign) UTViewState viewState;
 @property (nonatomic, strong) UIView * currentStateView;
 
+
 @end
 
 @implementation UTStateViewManager
 
-- (id)initWithContainerView:(UIView *)containerView viewFactory:(id<UTStateViewFactoryProtocol>)viewFactory viewSwitcher:(id<UTViewSwitcher>)viewSwitcher {
+
+- (id)initWithContainerView:(UIView *)containerView viewFactory:(id<UTStateViewFactoryProtocol>)viewFactory viewSwitcher:(id<UTViewSwitcher>)viewSwitcher stateViewActualizer:(id<UTStateViewActualizer>)stateViewActualizer {
     self = [super init];
     if (self) {
         _containerView = containerView;
         _viewFactory = viewFactory;
         _viewSwitcher = viewSwitcher;
+        _stateViewActualizer = stateViewActualizer;
     }
 
     return self;
 }
+
 
 
 #pragma mark - Blocks calling
@@ -51,7 +57,11 @@
 
 - (void)switchToState:(UTViewState)state withError:(NSError *)error animated:(BOOL)animated {
     if (self.viewState != state) {
+
         UIView * nextView = [[self viewFactory] viewForState:state error:error];
+
+        [[self stateViewActualizer] setupView:nextView];
+
         [self switchToView:nextView animated:animated state:state];
     }
 }
