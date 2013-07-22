@@ -8,11 +8,12 @@
 
 #import "EXViewController.h"
 #import "UTStateViewManager.h"
-#import "UTDefaultStateViewFactory.h"
-#import "UTDefaultViewSwitcher.h"
-#import "UTReloadableStateView.h"
+#import "UTBlockStateViewFactory.h"
+#import "UTFadeInOutViewSwitcher.h"
+#import "EXReloadableStateView.h"
 #import "UTStateViewActualizer.h"
-#import "UTDefaultStateViewActualizer.h"
+#import "UTBlockStateViewActualizer.h"
+#import "EXStateViewFactory.h"
 
 
 @interface EXViewController ()
@@ -27,15 +28,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
+    UTBlockStateViewActualizer * stateViewActualizer = [UTBlockStateViewActualizer new];
     _stateViewManager = [[UTStateViewManager alloc] initWithContainerView:self.view
-                                                              viewFactory:[UTDefaultStateViewFactory new]
-                                                             viewSwitcher:[UTDefaultViewSwitcher new]
-                                                      stateViewActualizer:[UTDefaultStateViewActualizer new]];
+                                                              viewFactory:[EXStateViewFactory new]
+                                                             viewSwitcher:[UTFadeInOutViewSwitcher new]
+                                                      stateViewActualizer:stateViewActualizer];
 
     __weak EXViewController * weakSelf = self;
-    [[_stateViewManager stateViewActualizer]
-     addSetupActionForViewOfProtocol:@protocol(UTReloadableStateView)
-                                with:^(id<UTReloadableStateView> view) {
+    [stateViewActualizer addSetupActionForViewOfProtocol:@protocol(EXReloadableStateView)
+                                with:^(id<EXReloadableStateView> view) {
                                     [view setReloadBlock:^{
                                         [weakSelf reload];
                                     }];
@@ -69,12 +70,12 @@
 
 
 - (void)reload {
-    [_stateViewManager switchToState:UTStateViewStateLoading];
+    [_stateViewManager switchToState:UTStateViewStateLoading animated:YES];
 }
 
 
 - (void)switchToNoDataState {
-    [_stateViewManager switchToState:UTStateViewStateNoData];
+    [_stateViewManager switchToState:UTStateViewStateNoData animated:YES];
 }
 
 
@@ -82,17 +83,17 @@
     [_stateViewManager switchToState:UTStateViewStateError withError:
      [NSError errorWithDomain:@"com.example" code:-1 userInfo:@{
       NSLocalizedDescriptionKey : @"Error example"
-     }]];
+     }] animated:YES];
 }
 
 
 - (void)switchToLoadingState {
-    [_stateViewManager switchToState:UTStateViewStateLoading];
+    [_stateViewManager switchToState:UTStateViewStateLoading animated:YES];
 }
 
 
 - (void)switchToBaseState {
-    [_stateViewManager switchToState:UTStateViewStateBase];
+    [_stateViewManager switchToState:UTStateViewStateBase animated:YES];
 }
 
 

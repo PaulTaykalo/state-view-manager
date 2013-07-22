@@ -10,9 +10,6 @@
 
 @protocol UTStateViewActualizer<NSObject>
 
-- (void)addSetupActionForViewOfClass:(Class)class with:(void (^)(id))with;
-- (void)addSetupActionForViewOfProtocol:(Protocol *)protocol with:(void (^)(id))with;
-
 /*
  Setting up view, based on added actions
  */

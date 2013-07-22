@@ -1,20 +1,20 @@
 //
-//  UTDefaultStateViewActualizer
+//  UTBlockStateViewActualizer
 //  Examples
 //
 //  Created by Paul Taykalo on 7/22/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
-#import "UTDefaultStateViewActualizer.h"
+#import "UTBlockStateViewActualizer.h"
 
-@interface UTDefaultStateViewActualizer ()
+@interface UTBlockStateViewActualizer ()
 
 @property (nonatomic, strong) NSMutableDictionary * viewSetupPerProtocol;
 @property (nonatomic, strong) NSMutableDictionary * viewSetupPerClass;
 
 @end
 
-@implementation UTDefaultStateViewActualizer {
+@implementation UTBlockStateViewActualizer {
 
 }
 

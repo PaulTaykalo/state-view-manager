@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "UTReloadableStateView.h"
+#import "EXReloadableStateView.h"
 
 
-@interface EXErrorStateView : UIView <UTReloadableStateView>
+@interface EXErrorStateView : UIView <EXReloadableStateView>
 
 @property (nonatomic, readonly) UILabel * messageLabel;
 @property (nonatomic, strong) NSString * message;

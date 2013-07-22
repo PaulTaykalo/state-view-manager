@@ -9,7 +9,7 @@
 #import "UTStateViewFactoryProtocol.h"
 @protocol UTStateViewFactoryProtocol;
 @protocol UTViewSwitcher;
-@protocol UTReloadableStateView;
+@protocol EXReloadableStateView;
 @protocol UTStateViewActualizer;
 
 

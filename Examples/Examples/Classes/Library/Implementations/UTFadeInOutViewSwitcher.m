@@ -5,12 +5,20 @@
 //  Created by Paul Taykalo on 7/18/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
-#import "UTDefaultViewSwitcher.h"
+#import "UTFadeInOutViewSwitcher.h"
 #import "UTViewStateContainer.h"
 
 
-@implementation UTDefaultViewSwitcher {
+@implementation UTFadeInOutViewSwitcher {
 
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.animationDuration = 0.5;
+    }
+    return self;
 }
 
 
@@ -22,28 +30,43 @@
     __weak id<UTViewStateContainer> stateContainer = viewStateContainer;
     if (previousView) {
 
-        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        if (animated) {
+            [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
 
-            previousView.alpha = 0;
+                previousView.alpha = 0;
 
-        } completion:^(BOOL completed) {
+            } completion:^(BOOL completed) {
 
+                if (stateContainer.viewState != previousState) {
+                    [previousView removeFromSuperview];
+                }
+
+            }];
+        } else {
+
+            // Simply remove old view
             if (stateContainer.viewState != previousState) {
                 [previousView removeFromSuperview];
             }
-
-        }];
+        }
     }
 
     if (nextView) {
-        nextView.alpha = 0;
         nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         nextView.frame = containerView.bounds;
         [containerView addSubview:nextView];
 
-        [UIView animateWithDuration:1 animations:^{
+        if (animated) {
+            nextView.alpha = 0;
+
+            [UIView animateWithDuration:1 animations:^{
+                nextView.alpha = 1;
+            }];
+        } else {
+
             nextView.alpha = 1;
-        }];
+
+        }
     }
 }
 

@@ -1,15 +1,16 @@
 //
-//  UTDefaultStateViewActualizer
+//  EXReloadableStateView
 //  Examples
 //
 //  Created by Paul Taykalo on 7/22/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "UTStateViewActualizer.h"
 
+typedef void (^EXReloadBlock)();
 
-@interface UTDefaultStateViewActualizer : NSObject <UTStateViewActualizer>
+@protocol EXReloadableStateView<NSObject>
 
+@property (nonatomic, copy) EXReloadBlock reloadBlock;
 
 @end

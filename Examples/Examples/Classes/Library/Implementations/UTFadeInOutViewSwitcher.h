@@ -6,13 +6,15 @@
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import "UTDefaultViewSwitcher.h"
+#import "UTFadeInOutViewSwitcher.h"
 #import "UTViewSwitcher.h"
 
 
 /*
  Simply switches view with fade animations
  */
-@interface UTDefaultViewSwitcher : NSObject <UTViewSwitcher>
+@interface UTFadeInOutViewSwitcher : NSObject <UTViewSwitcher>
+
+@property (nonatomic, assign) CGFloat animationDuration;
 
 @end
