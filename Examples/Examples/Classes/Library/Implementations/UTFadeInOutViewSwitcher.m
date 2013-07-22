@@ -51,6 +51,7 @@
         }
     }
 
+
     if (nextView) {
         nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         nextView.frame = containerView.bounds;
@@ -62,6 +63,7 @@
             [UIView animateWithDuration:1 animations:^{
                 nextView.alpha = 1;
             }];
+
         } else {
 
             nextView.alpha = 1;
