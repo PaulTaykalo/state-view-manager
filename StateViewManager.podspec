@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "State View Manager"
+  s.name         = "StateViewManager"
   s.version      = "0.0.1"
   s.summary      = "Yet another bicycle for handling state view switching"
 
