@@ -1,5 +1,5 @@
 //
-//  UTStateViewActualizer
+//  UTStateViewConfigurator
 //  Examples
 //
 //  Created by Paul Taykalo on 7/22/13.
@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol UTStateViewActualizer<NSObject>
+@protocol UTStateViewConfigurator<NSObject>
 
 /*
- Setting up view, based on added actions
+ Setting up view
  */
 - (void)setupView:(UIView *)view;
 

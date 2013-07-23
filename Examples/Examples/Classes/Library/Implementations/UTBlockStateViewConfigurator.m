@@ -1,20 +1,20 @@
 //
-//  UTBlockStateViewActualizer
+//  UTBlockStateViewConfigurator
 //  Examples
 //
 //  Created by Paul Taykalo on 7/22/13.
 //  Copyright (c) 2012 Stanfy LLC. All rights reserved.
 //
-#import "UTBlockStateViewActualizer.h"
+#import "UTBlockStateViewConfigurator.h"
 
-@interface UTBlockStateViewActualizer ()
+@interface UTBlockStateViewConfigurator ()
 
 @property (nonatomic, strong) NSMutableDictionary * viewSetupPerProtocol;
 @property (nonatomic, strong) NSMutableDictionary * viewSetupPerClass;
 
 @end
 
-@implementation UTBlockStateViewActualizer {
+@implementation UTBlockStateViewConfigurator {
 
 }
 
@@ -33,13 +33,13 @@
 
 #pragma mark - Views setup
 
-- (void)addSetupActionForViewOfProtocol:(Protocol *)protocol with:(void (^)(id))with {
+- (void)addSetupActionForViewOfProtocol:(Protocol *)protocol withSetupBlock:(void (^)(id))with {
     if (protocol && with) {
         [[self viewSetupPerProtocol] setObject:with forKey:NSStringFromProtocol(protocol)];
     }
 }
 
-- (void)addSetupActionForViewOfClass:(Class)class with:(void (^)(id))with {
+- (void)addSetupActionForViewOfClass:(Class)class withSetupBlock:(void (^)(id))with {
     if (class && with) {
         [[self viewSetupPerClass] setObject:with forKey:NSStringFromClass(class)];
     }

@@ -26,13 +26,16 @@
 
 
         [self addForState:UTStateViewStateLoading viewCreationBlock:^UIView *(NSError * error) {
-            return [EXLoadingStateView new];
+            EXLoadingStateView * view = [EXLoadingStateView new];
+            view.tag = 1001;
+            return view;
         }];
 
 
         [self addForState:UTStateViewStateNoData viewCreationBlock:^UIView *(NSError * error) {
             UIView * view = [UIView new];
             [view setBackgroundColor:[UIColor blueColor]];
+            view.tag = 1002;
             return view;
         }];
 
@@ -40,6 +43,7 @@
         [self addForState:UTStateViewStateError viewCreationBlock:^UIView *(NSError * error) {
             EXErrorStateView * view = [EXErrorStateView new];
             view.message = [error localizedDescription];
+            view.tag = 1003;
             return view;
         }];
 

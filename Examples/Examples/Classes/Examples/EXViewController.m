@@ -11,9 +11,10 @@
 #import "UTBlockStateViewFactory.h"
 #import "UTFadeInOutViewSwitcher.h"
 #import "EXReloadableStateView.h"
-#import "UTStateViewActualizer.h"
-#import "UTBlockStateViewActualizer.h"
+#import "UTStateViewConfigurator.h"
+#import "UTBlockStateViewConfigurator.h"
 #import "EXStateViewFactory.h"
+#import "UTFadeInOutNonConcurrentViewSwitcher.h"
 
 
 @interface EXViewController ()
@@ -24,23 +25,24 @@
 
 @implementation EXViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    UTBlockStateViewActualizer * stateViewActualizer = [UTBlockStateViewActualizer new];
+    UTBlockStateViewConfigurator * stateViewActualizer = [UTBlockStateViewConfigurator new];
     _stateViewManager = [[UTStateViewManager alloc] initWithContainerView:self.view
                                                               viewFactory:[EXStateViewFactory new]
-                                                             viewSwitcher:[UTFadeInOutViewSwitcher new]
-                                                      stateViewActualizer:stateViewActualizer];
+                                                             viewSwitcher:[UTFadeInOutNonConcurrentViewSwitcher new]
+                                                    stateViewConfigurator:stateViewActualizer];
 
     __weak EXViewController * weakSelf = self;
     [stateViewActualizer addSetupActionForViewOfProtocol:@protocol(EXReloadableStateView)
-                                with:^(id<EXReloadableStateView> view) {
-                                    [view setReloadBlock:^{
-                                        [weakSelf reload];
-                                    }];
-                                }];
+                                          withSetupBlock:^(id<EXReloadableStateView> view) {
+                                              [view setReloadBlock:^{
+                                                  [weakSelf reload];
+                                              }];
+                                          }];
 
 
 
@@ -96,11 +98,5 @@
     [_stateViewManager switchToState:UTStateViewStateBase animated:YES];
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

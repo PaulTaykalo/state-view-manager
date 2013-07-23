@@ -8,7 +8,7 @@
 #import "UTStateViewManager.h"
 #import "UTViewSwitcher.h"
 #import "UTViewStateContainer.h"
-#import "UTStateViewActualizer.h"
+#import "UTStateViewConfigurator.h"
 
 
 @interface UTStateViewManager ()<UTViewStateContainer>
@@ -22,13 +22,13 @@
 @implementation UTStateViewManager
 
 
-- (id)initWithContainerView:(UIView *)containerView viewFactory:(id<UTStateViewFactoryProtocol>)viewFactory viewSwitcher:(id<UTViewSwitcher>)viewSwitcher stateViewActualizer:(id<UTStateViewActualizer>)stateViewActualizer {
+- (id)initWithContainerView:(UIView *)containerView viewFactory:(id<UTStateViewFactoryProtocol>)viewFactory viewSwitcher:(id<UTViewSwitcher>)viewSwitcher stateViewConfigurator:(id<UTStateViewConfigurator>)stateViewConfigurator {
     self = [super init];
     if (self) {
         _containerView = containerView;
         _viewFactory = viewFactory;
         _viewSwitcher = viewSwitcher;
-        _stateViewActualizer = stateViewActualizer;
+        _stateViewConfigurator = stateViewConfigurator;
     }
 
     return self;
@@ -58,7 +58,7 @@
 
         UIView * nextView = [[self viewFactory] viewForState:state error:error];
 
-        [[self stateViewActualizer] setupView:nextView];
+        [[self stateViewConfigurator] setupView:nextView];
 
         [self switchToView:nextView animated:animated state:state];
     }
