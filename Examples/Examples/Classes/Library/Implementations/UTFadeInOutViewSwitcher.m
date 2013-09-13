@@ -55,7 +55,9 @@
 
     if (nextView) {
         nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        nextView.frame = containerView.bounds;
+        CGRect rect = CGRectZero;
+        rect.size = containerView.bounds.size;
+        nextView.frame = rect;
         [containerView addSubview:nextView];
 
         if (animated) {
