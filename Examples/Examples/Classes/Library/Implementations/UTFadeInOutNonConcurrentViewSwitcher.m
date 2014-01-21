@@ -65,6 +65,7 @@ typedef void (^NextAnimationBlock)();
 
         if (nextView) {
             nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            nextView.translatesAutoresizingMaskIntoConstraints = YES;
             CGRect rect = CGRectZero;
             rect.size = containerView.bounds.size;
             nextView.frame = rect;
@@ -80,6 +81,7 @@ typedef void (^NextAnimationBlock)();
     __weak id<UTViewStateContainer> stateContainer = viewStateContainer;
     if (nextView) {
         nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        nextView.translatesAutoresizingMaskIntoConstraints = YES;
         CGRect rect = CGRectZero;
         rect.size = containerView.bounds.size;
         nextView.frame = rect;
