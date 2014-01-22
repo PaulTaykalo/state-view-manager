@@ -55,6 +55,7 @@
 
     if (nextView) {
         nextView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        nextView.translatesAutoresizingMaskIntoConstraints = YES;
         CGRect rect = CGRectZero;
         rect.size = containerView.bounds.size;
         nextView.frame = rect;
